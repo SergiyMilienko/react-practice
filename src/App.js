@@ -4,6 +4,7 @@ import Counter from './components/Counter';
 import ClassCounter from './components/classCounter';
 import './styles/App.css';
 import PostList from './components/PostList';
+import MyButton from './components/UI/button/MyButton';
 
 function App() {
   const [posts, setPosts] = useState([
@@ -14,17 +15,14 @@ function App() {
     {id: 5, title: 'React', body: 'Decription'}
   ])
 
-  const [posts2, setPosts2] = useState([
-    {id: 1, title: 'Javascript2', body: 'Decription'},
-    {id: 2, title: 'HTML2', body: 'Decription'},
-    {id: 3, title: 'CSS2', body: 'Decription'},
-    {id: 4, title: 'Python2', body: 'Decription'},
-    {id: 5, title: 'React2', body: 'Decription'}
-  ])
   return (
     <div className="App">
+      <form>
+        <input type="text" placeholder='Name of the post'></input>
+        <input type='text' placeholder='Description of post'></input>
+        <MyButton>Create post</MyButton>
+      </form>
       <PostList posts={posts} title="List of Posts"/>
-      <PostList posts={posts2} title="List of Posts2"/>
     </div>
   );
 }

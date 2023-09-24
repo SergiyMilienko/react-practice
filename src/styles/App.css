@@ -20,9 +20,5 @@
     margin-top: 15px;
     justify-content: space-between;
     align-items: center;
-}
-
-.post__buttons {
-    display: flex;
-    align-items: center;
+    border-radius: 10px;
 }
