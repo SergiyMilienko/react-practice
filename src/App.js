@@ -4,8 +4,7 @@ import Counter from './components/Counter';
 import ClassCounter from './components/classCounter';
 import './styles/App.css';
 import PostList from './components/PostList';
-import MyButton from './components/UI/button/MyButton';
-import MyInput from './components/UI/input/MyInput';
+import PostForm from './components/PostForm';
 
 function App() {
   const [posts, setPosts] = useState([
@@ -16,35 +15,12 @@ function App() {
     {id: 5, title: 'React', body: 'Decription'}
   ])
 
-  const [title, setTitle] = useState('')
-  const [body, setBody] = useState('')
-
-  const addNewPost = (e) => {
-    e.preventDefault()
-    const newPost = {
-      id: Date.now(),
-      title,
-      body
-    }
+  const createPost = (newPost) => {
     setPosts([...posts, newPost])
-    setTitle('')
-    setBody('')
   }
-
   return (
     <div className="App">
-      <form>
-        <MyInput type="text" 
-          placeholder='Name of the post'
-          value={title}
-          onChange={e => setTitle(e.target.value)}
-          />
-        <MyInput type='text' 
-        placeholder='Description of post'
-        value={body}
-        onChange={e => setBody(e.target.value)}/>
-        <MyButton onClick={addNewPost}>Create post</MyButton>
-      </form>
+      <PostForm create={createPost}/>
       <PostList posts={posts} title="List of Posts"/>
     </div>
   );
