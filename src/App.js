@@ -1,5 +1,5 @@
 import logo from './logo.svg';
-import {react, useState} from 'react';
+import {react, useState, useRef} from 'react';
 import Counter from './components/Counter';
 import ClassCounter from './components/classCounter';
 import './styles/App.css';
@@ -16,12 +16,26 @@ function App() {
     {id: 5, title: 'React', body: 'Decription'}
   ])
 
+  const [title, setTitle] = useState('')
+  const bodyInputRef = useRef()
+  const addNewPost = (e) => {
+    e.preventDefault()
+    console.log(title)
+    console.log(bodyInputRef.current.value)
+  }
+
   return (
     <div className="App">
       <form>
-        <MyInput type="text" placeholder='Name of the post'/>
-        <MyInput type='text' placeholder='Description of post'/>
-        <MyButton disabled>Create post</MyButton>
+        <MyInput type="text" 
+          placeholder='Name of the post'
+          value={title}
+          onChange={e => setTitle(e.target.value)}
+          />
+        <MyInput type='text' 
+        placeholder='Description of post'
+        ref={bodyInputRef}/>
+        <MyButton onClick={addNewPost}>Create post</MyButton>
       </form>
       <PostList posts={posts} title="List of Posts"/>
     </div>
